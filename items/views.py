@@ -35,7 +35,7 @@ def all_items(request):
     
     elif request.method == 'DELETE':
         count = Item.objects.all().delete()
-        return JsonResponse({'message': '{} Tutorials were deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': '{}  Deleted successfully!'.format(count[0])}, status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
@@ -44,7 +44,7 @@ def single_item(request, product_id):
     try: 
         item = Item.objects.get(product_id = product_id) 
     except Item.DoesNotExist: 
-        return JsonResponse({'message': 'The tutorial does not exist'}, status=status.HTTP_404_NOT_FOUND) 
+        return JsonResponse({'message': 'does not exist'}, status=status.HTTP_404_NOT_FOUND) 
  
     if request.method == 'GET': 
         item_serializer = ItemSerializer(item) 
@@ -67,7 +67,7 @@ def single_item(request, product_id):
  
     elif request.method == 'DELETE': 
         item.delete() 
-        return JsonResponse({'message': 'Tutorial was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse({'message': 'Deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)
     
    
 def updates(request):
